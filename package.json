@@ -1,0 +1,25 @@
+{
+  "name": "j2c-importer",
+  "version": "0.1.0",
+  "description": "Turn CSS into J2C source objects.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "j2c",
+    "css",
+    "importer"
+  ],
+  "bin": {
+    "j2c-importer": "./bin/j2c-importer.js"
+  }
+  "author": "Pierre-Yves Gérardy",
+  "license": "MIT",
+  "dependencies": {
+    "js-beautify": "^1.5.10",
+    "postcss": "^5.0.13",
+    "postcss-safe-parser": "^1.0.4",
+    "yargs": "^3.31.0"
+  }
+}
