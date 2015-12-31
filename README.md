@@ -33,7 +33,7 @@ c2j = require('j2c-importer')
 
 
 obj = importer.toJ2c('a {background-color: red;}', {case:'camel'})
-// returns an object, rea
+// returns an object, ready to be passed to `j2c.sheet`.
 // {'@global': {' a': {backgroundColor: 'red'}}}
 
 js = importer.toJS('a {background-color: red;}', {case:'snake', indent: '\t'})
@@ -47,6 +47,7 @@ JSON = importer.toJSON('a {background-color: red;}', {case:'dash', beautify:fals
 
 ### Limitations:
 
+- Only works properly with full style sheets (inline styles will require mild manual cleaning).
 - Comments are dropped
 - Some CSS hacks may end up mangled. Check twice (or thrice).
 - May be more conservative than needed to ensure that `source` and `j2c.sheet(importer.toJ2c(sheet))` are functionally equivalent.
