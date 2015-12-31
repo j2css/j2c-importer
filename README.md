@@ -50,7 +50,7 @@ JSON = importer.toJSON('a {background-color: red;}', {case:'dash', beautify:fals
 - Only works properly with full style sheets (inline styles will require mild manual cleaning).
 - Comments are dropped
 - Some CSS hacks may end up mangled. Check twice (or thrice).
-- May be more conservative than needed to ensure that `source` and `j2c.sheet(importer.toJ2c(sheet))` are functionally equivalent.
+- May be more conservative than needed to ensure that `source` and `j2c.sheet(importer.toJ2c(source))` are functionally equivalent.
 - Little to no systematic testing (WIP).
 
 ## License: MIT
