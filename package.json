@@ -13,7 +13,7 @@
   ],
   "bin": {
     "j2c-importer": "./bin/j2c-importer.js"
-  }
+  },
   "author": "Pierre-Yves Gérardy",
   "license": "MIT",
   "dependencies": {
