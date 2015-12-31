@@ -19,7 +19,8 @@ $ j2c-importer [options] your-sheet.css
 
 - `--format`: `js|json` the output format. Defaults to `js`.
 - `--case`: `camel|snake|dash` how you want hyphenated property names to appear in the output? Defaults to `camel` in `js` mode and to `dash` in `json` mode.
-- `--indent`: the indentation of the output. Defaults to two spaces.
+- `--beautify`: whether you want the output to be beautified. Defaults to two `true`.
+- `--indent`: the indentation of the output when beautifying. Defaults to two spaces.
 
 ### API
 
@@ -28,21 +29,27 @@ npm install --save j2c-importer
 ```
 
 ```
-importer = require('j2c-importer')
+c2j = require('j2c-importer')
+
+
 obj = importer.toJ2c('a {background-color: red;}', {case:'camel'})
-// {' a': {backgroundColor: 'red'}}
+// returns an object, rea
+// {'@global': {' a': {backgroundColor: 'red'}}}
 
-js = importer.toJS('a {background-color: red;}', {case:'snake', indent: '  '})
-// a multi-line, indented version of "{' a': {background_color: 'red'}}"
+js = importer.toJS('a {background-color: red;}', {case:'snake', indent: '\t'})
+// returns a multi-line, tab-indented version of 
+// "{'@global': {' a': {background_color: 'red'}}}"
 
-JSON = importer.toJSON('a {background-color: red;}', {case:'dash', indent: '\t'})
-// a multi-line, indented version of "{\" a\": {\"background-color\": \"red\"}}"
+JSON = importer.toJSON('a {background-color: red;}', {case:'dash', beautify:false})
+// returns a JSON string
+// "{\"@global\":{\" a\":{\"background-color\":\"red\"}}}"
 ```
 
 ### Limitations:
 
 - Comments are dropped
 - Some CSS hacks may end up mangled. Check twice (or thrice).
+- May be more conservative than needed to ensure that `source` and `j2c.sheet(importer.toJ2c(sheet))` are functionally equivalent.
 - Little to no systematic testing (WIP).
 
 ## License: MIT
