@@ -150,5 +150,5 @@ module.exports = function(source, options) {
     var CASE = options.case || 'camel'
     var AST = postcss().process(source,  {parser: safe}).root
     var caseConverter = caseHandlers[CASE]
-    return block(AST.nodes, caseConverter)
+    return {'@global':block(AST.nodes, caseConverter)}
 }
