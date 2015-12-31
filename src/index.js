@@ -6,19 +6,23 @@ var utils = require('./utils')
 module.exports = {
     toJ2c: toJ2c,
     toJS: function(source, options) {
-        return beautify(
-            util.inspect(
-                toJ2c(source, options), 
-                {depth: null}
-            ),
+        var res = util.inspect(
+            toJ2c(source, options), 
+            {depth: null}
+        )
+        if (options && !options.beautify) return res
+        else return beautify(
+            res,
             utils.beautifyOptions(options)
         )
     },
     toJSON: function(source, options) {
-        return beautify(
-            JSON.stringify(
-                toJ2c(source, options)
-            ),
+        var res = JSON.stringify(
+            toJ2c(source, options)
+        )
+        if (options && !options.beautify) return res
+        else return beautify(
+            res,
             utils.beautifyOptions(options)
         )
     }

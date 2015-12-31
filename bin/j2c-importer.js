@@ -5,19 +5,24 @@ var fs = require('fs')
 
 var argv = require('yargs')
     .usage('Usage: $0 [options] <input.css>')
+    .option('format', {
+        describe: 'the output format',
+        choices: ['js', 'json'],
+        default: 'js'
+    })
     .option('case', {
         describe: 'how you want dashed property names to appear in the output. ' +
                   'The options map to camelCase, snake_case and dash-case. ' + 
                   'Defaults to `camel` in `js` mode and `dash` in `json` mode.',
         choices: ['camel', 'snake', 'dash']
     })
-    .option('format', {
-        describe: 'the output format',
-        choices: ['js', 'json'],
-        default: 'js'
+    .option('beautify', {
+        describe: 'when true, the ouput is put on several line and indented.',
+        boolean: true,
+        default: true
     })
     .option('indent', {
-        describe: 'the output indentation level (use spaces or tabs)',
+        describe: 'the output indentation level when beautifying (use spaces or tabs)',
         default: '  '
     })
     .help('h')
