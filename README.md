@@ -19,7 +19,7 @@ $ j2c-importer [options] your-sheet.css
 
 - `--format`: `js|json` the output format. Defaults to `js`.
 - `--case`: `camel|snake|dash` how you want hyphenated property names to appear in the output? Defaults to `camel` in `js` mode and to `dash` in `json` mode.
-- `--beautify`: whether you want the output to be beautified. Defaults to two `true`.
+- `--beautify`: whether you want the output to be beautified. Defaults to `true`.
 - `--indent`: the indentation of the output when beautifying. Defaults to two spaces.
 
 ### API
