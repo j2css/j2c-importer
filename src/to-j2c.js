@@ -32,7 +32,7 @@ serializers = {
             res[k].push(value)
         } else {
             res[k] = value
-        }        
+        }
     },
     comment: function(){
         // for now, drop the comments.
@@ -89,7 +89,7 @@ cornerCase = {
                 return 'dupe'
             }
         }
-        dict[node.selector] = true        
+        dict[k] = true
     },
     decl: function (node, previous, dict) {
         var k = propKey(node)
@@ -102,7 +102,7 @@ cornerCase = {
                 return 'dupe'
             }
         }
-        dict[k] = true        
+        dict[k] = true
     },
     comment: function(){}
 }
@@ -141,14 +141,19 @@ function block(nodes, caseConverter) {
     }
 }
 
+function analyze(nodes) {
+    return {needsAtGlobal: true}
+}
+
 var caseHandlers = require('./case')
 var postcss = require('postcss')
 var safe = require('postcss-safe-parser')
 
 module.exports = function(source, options) {
-    options = options || {}
-    var CASE = options.case || 'camel'
     var AST = postcss().process(source,  {parser: safe}).root
-    var caseConverter = caseHandlers[CASE]
-    return {'@global':block(AST.nodes, caseConverter)}
+    var properties = analyze(AST.nodes)
+    var caseConverter = caseHandlers[options.case]
+    var res = block(AST.nodes, caseConverter, properties)
+    if (properties.needsAtGlobal) res = {'@global': res}
+    return res
 }

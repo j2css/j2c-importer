@@ -4,7 +4,8 @@
   "description": "Turn CSS into J2C source objects.",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "browserify": "browserify -s j2cImporter src/index.js"
   },
   "keywords": [
     "j2c",
@@ -18,6 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "js-beautify": "^1.5.10",
+    "lodash.defaultsdeep": "^3.10.0",
     "postcss": "^5.0.13",
     "postcss-safe-parser": "^1.0.4",
     "yargs": "^3.31.0"

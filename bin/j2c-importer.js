@@ -12,7 +12,7 @@ var argv = require('yargs')
     })
     .option('case', {
         describe: 'how you want dashed property names to appear in the output. ' +
-                  'The options map to camelCase, snake_case and dash-case. ' + 
+                  'The options map to camelCase, snake_case and dash-case. ' +
                   'Defaults to `camel` in `js` mode and `dash` in `json` mode.',
         choices: ['camel', 'snake', 'dash']
     })
@@ -27,11 +27,6 @@ var argv = require('yargs')
     })
     .help('h')
     .alias('h', 'help').argv
-
-if (!argv.case) {
-    if (argv.format === 'js') argv.case = 'camel'
-    else argv.case = 'dash'
-}
 
 if (!argv._.length) {
     console.error("reading from STDIN has yet to be implemented. Please specify the input file.")
