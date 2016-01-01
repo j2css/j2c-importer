@@ -44,13 +44,13 @@ function atRuleKey (node) {
     switch(node.name) {
         case 'import': case 'charset': case 'namespace':
         case 'font-face': case 'viewport': return '@' + node.name;
-        default: return '@' + node.name + ' ' + node.params
+        default: return '@' + node.name + ' ' + (node.params || '').replace(/\s+/g, ' ')
     }
 }
 
 function selectorKey (node) {
     if (!node) return null;
-    return (/^(?![\d])[-\w]+$/.test(node.selector) ? ' ' : '') + node.selector
+    return ((/^(?![\d])[-\w]+$/.test(node.selector) ? ' ' : '') + node.selector).replace(/\s+/g, ' ')
 }
 
 function propKey (node) {
