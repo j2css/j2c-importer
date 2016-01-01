@@ -2,6 +2,8 @@
 
 Reads CSS, prints or loads [J2C](http://j2c.py.gy) source objects.
 
+You can [try it online](http://j2c.py.gy/import.html).
+
 ## Usage
 
 ### CLI
