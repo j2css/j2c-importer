@@ -4,7 +4,6 @@ serializers = {
         var bl
         switch(node.name) {
             case 'import': case 'charset': case 'namespace': bl = node.params; break
-            case 'font-face': case 'viewport': case 'page': bl = block(node.nodes); break
             default: bl = block(node.nodes, caseConverter)
         }
         if (adjascent) {
@@ -43,7 +42,9 @@ function atRuleKey (node) {
     if (!node) return null;
     switch(node.name) {
         case 'import': case 'charset': case 'namespace':
-        case 'font-face': case 'viewport': return '@' + node.name;
+        case 'font-face': case 'viewport': case 'styleset':
+        case 'swash': case 'ornaments': case 'annotation':
+        case 'stylistic': case 'character-variant': return '@' + node.name;
         default: return '@' + node.name + ' ' + (node.params || '').replace(/\s+/g, ' ')
     }
 }
